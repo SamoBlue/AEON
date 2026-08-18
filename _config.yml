@@ -1,0 +1,12 @@
+title: AEON Smart Structure
+url: "https://aeonsst.com"
+baseurl: ""
+markdown: kramdown
+collections:
+  projects:
+    output: false
+  members:
+    output: false
+exclude:
+  - README.md
+  - AEON-Portfolio-CMS.zip

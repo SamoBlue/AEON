@@ -1,0 +1,139 @@
+media:
+  - name: images
+    label: Images
+    input: assets/uploads
+    output: /assets/uploads
+    rename: safe
+    categories: [image]
+
+settings:
+  commit:
+    identity: user
+
+content:
+  - name: posts
+    label: Feed / News Posts
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{title}.md"
+    operations:
+      create: true
+      rename: true
+      delete: true
+    view:
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: category
+        label: Category (project, insight, or event)
+        type: string
+        required: true
+        default: insight
+      - name: author
+        label: Author
+        type: string
+      - name: summary
+        label: Short summary
+        type: text
+      - name: image
+        label: Cover image
+        type: image
+        media: images
+      - name: body
+        label: Full post
+        type: rich-text
+        format: html
+        media: images
+
+  - name: projects
+    label: Projects
+    type: collection
+    path: _projects
+    format: yaml-frontmatter
+    filename: "{title}.md"
+    operations:
+      create: true
+      rename: true
+      delete: true
+    view:
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: Project name
+        type: string
+        required: true
+      - name: date
+        label: Project date
+        type: date
+      - name: status
+        label: Status (Active, Completed, Planned)
+        type: string
+        default: Active
+      - name: location
+        label: Location
+        type: string
+      - name: summary
+        label: Short summary
+        type: text
+      - name: image
+        label: Project image
+        type: image
+        media: images
+      - name: body
+        label: Project details
+        type: rich-text
+        format: html
+        media: images
+
+  - name: members
+    label: Team Members
+    type: collection
+    path: _members
+    format: yaml-frontmatter
+    filename: "{name}.md"
+    operations:
+      create: true
+      rename: true
+      delete: true
+    view:
+      primary: name
+      sort: order
+      order: asc
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: role
+        label: Role / Job title
+        type: string
+        required: true
+      - name: order
+        label: Display order
+        type: number
+        default: 10
+      - name: bio
+        label: Short bio
+        type: text
+      - name: email
+        label: Email
+        type: string
+      - name: phone
+        label: Phone
+        type: string
+      - name: image
+        label: Photo
+        type: image
+        media: images

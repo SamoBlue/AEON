@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -915,6 +918,56 @@
                 text-align: center;
             }
         }
+
+
+        /* ─── CMS-DRIVEN PROJECTS & TEAM ─── */
+        .content-section {
+            padding: 70px 5%;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .content-section.alt { background: var(--bg-medium); }
+        .content-wrap { max-width: 1440px; margin: 0 auto; }
+        .content-heading { text-align: center; margin-bottom: 38px; }
+        .content-heading h2 { color: var(--accent); font-size: 1.8rem; text-transform: uppercase; }
+        .content-heading p { color: var(--text-dim); margin-top: 8px; }
+        .projects-grid, .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+        .project-card, .member-card {
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .project-card:hover, .member-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(230,126,34,.35);
+            box-shadow: var(--shadow);
+        }
+        .project-card img, .member-card img {
+            width: 100%; height: 210px; object-fit: cover; display: block;
+            background: var(--bg-card);
+        }
+        .project-card-body, .member-card-body { padding: 20px; }
+        .project-card h3, .member-card h3 { font-size: 1.08rem; margin-bottom: 8px; }
+        .project-card p, .member-card p { color: var(--text-dim); font-size: .88rem; }
+        .project-meta { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+        .project-meta span {
+            font-size:.7rem; padding:3px 10px; border-radius:20px;
+            color:var(--accent); background:rgba(230,126,34,.12);
+        }
+        .member-role { color: var(--accent) !important; font-weight: 700; margin-bottom: 8px; }
+        .member-contact { margin-top: 12px; display:flex; flex-direction:column; gap:5px; }
+        .member-contact a { color: var(--text-dim); text-decoration:none; font-size:.82rem; }
+        .member-contact a:hover { color:var(--accent); }
+        .empty-content {
+            color:var(--text-dim); text-align:center; padding:28px;
+            background:var(--bg-dark); border-radius:var(--radius);
+        }
+
     </style>
 </head>
 <body>
@@ -930,6 +983,8 @@
             <li><a href="#home" class="tr" data-en="Home" data-ar="الرئيسية">Home</a></li>
             <li><a href="#feed" class="tr" data-en="Feed" data-ar="المجلة">Feed</a></li>
             <li><a href="#services" class="tr" data-en="Services" data-ar="خدماتنا">Services</a></li>
+            <li><a href="#projects" class="tr" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+            <li><a href="#team" class="tr" data-en="Team" data-ar="الفريق">Team</a></li>
             <li><a href="#About Us" class="tr" data-en="About Us" data-ar="معلومات عنا">About Us</a></li>
         </ul>
 
@@ -993,7 +1048,7 @@
 <!-- ═══ MAIN GRID: Feed + Sidebar ═══ -->
 <div class="main-grid" id="feed">
 
-    <!-- ─── LEFT: POSTS FEED ─── -->
+    <!-- ─── LEFT: POSTS FEED (managed with Pages CMS) ─── -->
     <div class="feed-col">
         <div class="feed-header">
             <h2><i class="fas fa-rss"></i> <span class="tr" data-en="Latest Updates" data-ar="آخر المستجدات">Latest Updates</span></h2>
@@ -1005,81 +1060,25 @@
             </div>
         </div>
 
-        <!-- Post 1 -->
-        <div class="post" data-category="project">
-            <img class="post-img" src="https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?auto=format&fit=crop&q=80&w=800" alt="Project" loading="lazy">
+        {% if site.posts.size > 0 %}
+        {% for post in site.posts %}
+        <article class="post" data-category="{{ post.category | default: 'insight' | escape }}">
+            {% if post.image %}<img class="post-img" src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">{% endif %}
             <div class="post-body">
                 <div class="post-meta">
-                    <span class="tag">Project</span>
-                    <span>March 12, 2026</span>
-                    <span>• 5 min read</span>
+                    <span class="tag">{{ post.category | default: 'Update' }}</span>
+                    <span>{{ post.date | date: "%B %d, %Y" }}</span>
+                    {% if post.author %}<span>• {{ post.author }}</span>{% endif %}
                 </div>
-                <h3 class="tr" data-en="Tower Bridge Structural Retrofit" data-ar="إعادة تأهيل جسر البرج">Tower Bridge Structural Retrofit</h3>
-                <p class="tr" data-en="Advanced composite materials and smart monitoring systems were deployed to extend the lifespan of this iconic structure." data-ar="تم استخدام مواد مركبة متطورة وأنظمة مراقبة ذكية لإطالة عمر هذا المعلم التاريخي."></p>
-                <div class="post-actions">
-                    <button class="like-btn"><i class="far fa-heart"></i> <span>24</span></button>
-                    <button><i class="far fa-comment"></i> <span>8</span></button>
-                    <button><i class="far fa-share-square"></i> <span>12</span></button>
-                </div>
+                <h3>{{ post.title }}</h3>
+                {% if post.summary %}<p>{{ post.summary }}</p>{% else %}<p>{{ post.content | strip_html | truncate: 220 }}</p>{% endif %}
+                <div class="post-content" style="color:var(--text-dim);font-size:.9rem;line-height:1.7;">{{ post.content }}</div>
             </div>
-        </div>
-
-        <!-- Post 2 -->
-        <div class="post" data-category="insight">
-            <img class="post-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85f64d?auto=format&fit=crop&q=80&w=800" alt="Insight" loading="lazy">
-            <div class="post-body">
-                <div class="post-meta">
-                    <span class="tag">Insight</span>
-                    <span>March 8, 2026</span>
-                    <span>• 3 min read</span>
-                </div>
-                <h3 class="tr" data-en="BIM 4D: The Future of Construction" data-ar="نمذجة BIM رباعية الأبعاد: مستقبل البناء">BIM 4D: The Future of Construction</h3>
-                <p class="tr" data-en="Integrating time as a dimension in BIM models is revolutionizing project scheduling and clash detection." data-ar="دمج البُعد الزمني في نماذج BIM يُحدث ثورة في جدولة المشاريع وكشف التضاربات."></p>
-                <div class="post-actions">
-                    <button class="like-btn"><i class="far fa-heart"></i> <span>42</span></button>
-                    <button><i class="far fa-comment"></i> <span>15</span></button>
-                    <button><i class="far fa-share-square"></i> <span>27</span></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Post 3 -->
-        <div class="post" data-category="event">
-            <img class="post-img" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800" alt="Event" loading="lazy">
-            <div class="post-body">
-                <div class="post-meta">
-                    <span class="tag">Event</span>
-                    <span>March 2, 2026</span>
-                    <span>• 2 min read</span>
-                </div>
-                <h3 class="tr" data-en="Smart Cities Summit 2026 – Recap" data-ar="قمة المدن الذكية 2026 – ملخص">Smart Cities Summit 2026 – Recap</h3>
-                <p class="tr" data-en="Our team showcased AI-driven structural health monitoring systems at the region's largest smart city expo." data-ar="استعرض فريقنا أنظمة مراقبة الصحة الإنشائية المعتمدة على الذكاء الاصطناعي في أكبر معرض للمدن الذكية بالمنطقة."></p>
-                <div class="post-actions">
-                    <button class="like-btn"><i class="far fa-heart"></i> <span>18</span></button>
-                    <button><i class="far fa-comment"></i> <span>6</span></button>
-                    <button><i class="far fa-share-square"></i> <span>9</span></button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Post 4 -->
-        <div class="post" data-category="project">
-            <img class="post-img" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=800" alt="Project" loading="lazy">
-            <div class="post-body">
-                <div class="post-meta">
-                    <span class="tag">Project</span>
-                    <span>Feb 25, 2026</span>
-                    <span>• 4 min read</span>
-                </div>
-                <h3 class="tr" data-en="Green Roof Integration – Office Complex" data-ar="دمج الأسطح الخضراء – مجمع مكاتب">Green Roof Integration – Office Complex</h3>
-                <p class="tr" data-en="Sustainable design meets structural innovation with a 2,000 m² green roof that reduces energy consumption by 30%." data-ar="تصميم مستدام يلتقي بالابتكار الإنشائي بسطح أخضر بمساحة ٢٠٠٠ م² يقلل استهلاك الطاقة بنسبة ٣٠٪."></p>
-                <div class="post-actions">
-                    <button class="like-btn"><i class="far fa-heart"></i> <span>31</span></button>
-                    <button><i class="far fa-comment"></i> <span>11</span></button>
-                    <button><i class="far fa-share-square"></i> <span>19</span></button>
-                </div>
-            </div>
-        </div>
+        </article>
+        {% endfor %}
+        {% else %}
+        <div class="empty-content">No updates have been published yet.</div>
+        {% endif %}
     </div>
 
     <!-- ─── RIGHT: SIDEBAR ─── -->
@@ -1090,10 +1089,10 @@
             <h4><i class="fas fa-bolt"></i> <span class="tr" data-en="Quick Menu" data-ar="قائمة سريعة">Quick Menu</span></h4>
             <ul class="quick-menu-list">
                 <li><a href="#"><i class="fas fa-home"></i> <span class="tr" data-en="Dashboard" data-ar="لوحة التحكم">Dashboard</span></a></li>
-                <li><a href="#"><i class="fas fa-folder-open"></i> <span class="tr" data-en="Projects Archive" data-ar="أرشيف المشاريع">Projects Archive</span></a></li>
+                <li><a href="#projects"><i class="fas fa-folder-open"></i> <span class="tr" data-en="Projects Archive" data-ar="أرشيف المشاريع">Projects Archive</span></a></li>
                 <li><a href="#"><i class="fas fa-video"></i> <span class="tr" data-en="Live Cameras" data-ar="كاميرات حية">Live Cameras</span></a></li>
                 <li><a href="#"><i class="fas fa-file-alt"></i> <span class="tr" data-en="Reports" data-ar="التقارير">Reports</span></a></li>
-                <li><a href="#"><i class="fas fa-users-cog"></i> <span class="tr" data-en="Team" data-ar="الفريق">Team</span></a></li>
+                <li><a href="#team"><i class="fas fa-users-cog"></i> <span class="tr" data-en="Team" data-ar="الفريق">Team</span></a></li>
                 <li><a href="#"><i class="fas fa-cog"></i> <span class="tr" data-en="Settings" data-ar="الإعدادات">Settings</span></a></li>
             </ul>
         </div>
@@ -1127,7 +1126,7 @@
         <!-- Quick Contact -->
         <div class="sidebar-card contact-mini">
             <h4><i class="fas fa-headset"></i> <span class="tr" data-en="Reach Us" data-ar="تواصل معنا">Reach Us</span></h4>
-            <p><i class="fas fa-envelope"></i> alhasan.haitham97@gmail.com</p>
+            <p><i class="fas fa-envelope"></i> contact@aeonsmart.com</p>
             <p><i class="fas fa-phone-alt"></i> +966 500 000 000</p>
             <p><i class="fas fa-map-marker-alt"></i> <span class="tr" data-en="Riyadh, Saudi Arabia" data-ar="الرياض، المملكة العربية السعودية">Riyadh, Saudi Arabia</span></p>
             <br>
@@ -1153,6 +1152,70 @@
 
     </aside>
 </div>
+
+
+<!-- ═══ PROJECTS ARCHIVE (managed with Pages CMS) ═══ -->
+<section id="projects" class="content-section alt">
+    <div class="content-wrap">
+        <div class="content-heading">
+            <h2 class="tr" data-en="Projects Archive" data-ar="أرشيف المشاريع">Projects Archive</h2>
+            <p class="tr" data-en="Our active and completed engineering projects." data-ar="مشاريعنا الهندسية الحالية والمنجزة.">Our active and completed engineering projects.</p>
+        </div>
+        <div class="projects-grid">
+            {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+            {% if sorted_projects.size > 0 %}
+            {% for project in sorted_projects %}
+            <article class="project-card">
+                {% if project.image %}<img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy">{% endif %}
+                <div class="project-card-body">
+                    <div class="project-meta">
+                        {% if project.status %}<span>{{ project.status }}</span>{% endif %}
+                        {% if project.location %}<span><i class="fas fa-map-marker-alt"></i> {{ project.location }}</span>{% endif %}
+                        {% if project.date %}<span>{{ project.date | date: "%Y" }}</span>{% endif %}
+                    </div>
+                    <h3>{{ project.title }}</h3>
+                    {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
+                    <div style="margin-top:12px;color:var(--text-dim);font-size:.86rem;line-height:1.7;">{{ project.content }}</div>
+                </div>
+            </article>
+            {% endfor %}
+            {% else %}
+            <div class="empty-content">No projects have been added yet.</div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ═══ TEAM MEMBERS (managed with Pages CMS) ═══ -->
+<section id="team" class="content-section">
+    <div class="content-wrap">
+        <div class="content-heading">
+            <h2 class="tr" data-en="Our Team" data-ar="فريقنا">Our Team</h2>
+            <p class="tr" data-en="Meet the people behind AEON Smart Structure." data-ar="تعرّف على فريق إيون للمنشآت الذكية.">Meet the people behind AEON Smart Structure.</p>
+        </div>
+        <div class="members-grid">
+            {% assign sorted_members = site.members | sort: 'order' %}
+            {% if sorted_members.size > 0 %}
+            {% for member in sorted_members %}
+            <article class="member-card">
+                {% if member.image %}<img src="{{ member.image | relative_url }}" alt="{{ member.name | escape }}" loading="lazy">{% endif %}
+                <div class="member-card-body">
+                    <h3>{{ member.name }}</h3>
+                    <p class="member-role">{{ member.role }}</p>
+                    {% if member.bio %}<p>{{ member.bio }}</p>{% endif %}
+                    <div class="member-contact">
+                        {% if member.email %}<a href="mailto:{{ member.email }}"><i class="fas fa-envelope"></i> {{ member.email }}</a>{% endif %}
+                        {% if member.phone %}<a href="tel:{{ member.phone }}"><i class="fas fa-phone"></i> {{ member.phone }}</a>{% endif %}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+            {% else %}
+            <div class="empty-content">No team members have been added yet.</div>
+            {% endif %}
+        </div>
+    </div>
+</section>
 
 <!-- ═══ SERVICES SECTION (compact) ═══ -->
 <section id="services" style="padding:60px 5%;background:var(--bg-medium);border-top:1px solid rgba(255,255,255,0.04);">
@@ -1195,7 +1258,7 @@
             <p class="tr" data-en="Tell us what you need and attach drawings, photos, PDFs, or other project files. We will receive your request by email." data-ar="أخبرنا بما تحتاجه وأرفق المخططات أو الصور أو ملفات PDF أو أي ملفات خاصة بالمشروع. سنستلم طلبك عبر البريد الإلكتروني.">Tell us what you need and attach drawings, photos, PDFs, or other project files. We will receive your request by email.</p>
         </div>
 
-        <form class="request-form" action="https://formsubmit.co/alhasan.haitham97@gmail.com" method="POST" enctype="multipart/form-data">
+        <form class="request-form" action="https://formsubmit.co/contact@aeonsmart.com" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_next" value="https://aeonsst.com/?sent=1#contact">
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
