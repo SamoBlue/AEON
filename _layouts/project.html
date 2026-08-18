@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | AEON Smart Structure</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#1e2124;--panel:#2f3136;--accent:#e67e22;--text:#f4f4f4;--dim:#b9bbbe;--radius:12px}
+    *{box-sizing:border-box} body{margin:0;font-family:'Montserrat','Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(30,33,36,.96);border-bottom:1px solid rgba(255,255,255,.06);padding:16px 5%;display:flex;justify-content:space-between;align-items:center}
+    .brand{color:var(--accent);font-weight:700;text-decoration:none;letter-spacing:.5px}.back{color:var(--text);text-decoration:none;font-size:.88rem}.back:hover{color:var(--accent)}
+    .hero{max-width:1100px;margin:0 auto;padding:55px 5% 25px}.hero h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.15;margin:12px 0}.meta{display:flex;flex-wrap:wrap;gap:10px}.meta span{background:rgba(230,126,34,.12);color:var(--accent);border-radius:20px;padding:5px 12px;font-size:.78rem}
+    .cover{max-width:1100px;margin:20px auto 0;padding:0 5%}.cover img{width:100%;max-height:580px;object-fit:cover;border-radius:var(--radius);display:block}
+    .content{max-width:900px;margin:0 auto;padding:40px 5% 80px;color:var(--dim);font-size:1rem}.content h2,.content h3{color:var(--text)}.content a{color:var(--accent)}.content img{max-width:100%;border-radius:10px}.summary{font-size:1.08rem;color:var(--text);margin:10px 0 0}
+    footer{text-align:center;padding:30px 5%;border-top:1px solid rgba(255,255,255,.06);color:var(--dim);font-size:.8rem}
+  </style>
+</head>
+<body>
+  <div class="topbar"><a class="brand" href="{{ '/' | relative_url }}">AEON SMART STRUCTURE</a><a class="back" href="{{ '/#projects' | relative_url }}"><i class="fas fa-arrow-left"></i> Back to Projects</a></div>
+  <header class="hero">
+    <div class="meta">
+      {% if page.status %}<span>{{ page.status }}</span>{% endif %}
+      {% if page.location %}<span><i class="fas fa-map-marker-alt"></i> {{ page.location }}</span>{% endif %}
+      {% if page.date %}<span>{{ page.date | date: "%B %Y" }}</span>{% endif %}
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<p class="summary">{{ page.summary }}</p>{% endif %}
+  </header>
+  {% if page.image %}<div class="cover"><img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}"></div>{% endif %}
+  <main class="content">{{ content }}</main>
+  <footer>© 2026 AEON SMART STRUCTURE. All rights reserved.</footer>
+</body>
+</html>

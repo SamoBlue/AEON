@@ -11,50 +11,6 @@ settings:
     identity: user
 
 content:
-  - name: posts
-    label: Feed / News Posts
-    type: collection
-    path: _posts
-    format: yaml-frontmatter
-    filename: "{year}-{month}-{day}-{title}.md"
-    operations:
-      create: true
-      rename: true
-      delete: true
-    view:
-      primary: title
-      sort: date
-      order: desc
-    fields:
-      - name: title
-        label: Title
-        type: string
-        required: true
-      - name: date
-        label: Date
-        type: date
-        required: true
-      - name: category
-        label: Category (project, insight, or event)
-        type: string
-        required: true
-        default: insight
-      - name: author
-        label: Author
-        type: string
-      - name: summary
-        label: Short summary
-        type: text
-      - name: image
-        label: Cover image
-        type: image
-        media: images
-      - name: body
-        label: Full post
-        type: rich-text
-        format: html
-        media: images
-
   - name: projects
     label: Projects
     type: collection

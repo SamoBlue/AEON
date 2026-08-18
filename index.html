@@ -968,6 +968,53 @@ layout: null
             background:var(--bg-dark); border-radius:var(--radius);
         }
 
+        /* ─── EXPERIENCE / ABOUT / PROJECT LINKS ─── */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .experience-card {
+            background: var(--bg-dark);
+            padding: 28px 22px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid rgba(255,255,255,.05);
+            transition: var(--transition);
+        }
+        .experience-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(230,126,34,.35);
+            box-shadow: var(--shadow);
+        }
+        .experience-card i { font-size: 2.1rem; color: var(--accent); margin-bottom: 14px; }
+        .experience-card h3 { font-size: 1rem; margin-bottom: 7px; }
+        .experience-card p { color: var(--text-dim); font-size: .84rem; }
+        .project-link { color: inherit; text-decoration: none; display: block; height: 100%; }
+        .project-read-more { display: inline-block; margin-top: 14px; color: var(--accent); font-size: .82rem; font-weight: 700; }
+        .about-card {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .about-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,.05);
+            padding: 22px;
+            border-radius: var(--radius);
+        }
+        .about-item i { color: var(--accent); width: 24px; margin-top: 3px; font-size: 1.1rem; }
+        .about-item div { display: flex; flex-direction: column; gap: 5px; }
+        .about-item strong { color: var(--text-main); font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; }
+        .about-item span, .about-item a { color: var(--text-dim); text-decoration: none; font-size: .9rem; line-height: 1.6; }
+        .about-item a:hover { color: var(--accent); }
+        @media (max-width: 700px) { .about-card { grid-template-columns: 1fr; } }
+
     </style>
 </head>
 <body>
@@ -981,11 +1028,10 @@ layout: null
 
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="tr" data-en="Home" data-ar="الرئيسية">Home</a></li>
-            <li><a href="#feed" class="tr" data-en="Feed" data-ar="المجلة">Feed</a></li>
-            <li><a href="#services" class="tr" data-en="Services" data-ar="خدماتنا">Services</a></li>
+            <li><a href="#experience" class="tr" data-en="Experience" data-ar="خبراتنا">Experience</a></li>
             <li><a href="#projects" class="tr" data-en="Projects" data-ar="المشاريع">Projects</a></li>
             <li><a href="#team" class="tr" data-en="Team" data-ar="الفريق">Team</a></li>
-            <li><a href="#About Us" class="tr" data-en="About Us" data-ar="معلومات عنا">About Us</a></li>
+            <li><a href="#about" class="tr" data-en="About Us" data-ar="معلومات عنا">About Us</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -1025,64 +1071,37 @@ layout: null
     </div>
 </header>
 
-<!-- ═══ STATS BAR ═══ -->
-<div class="stats-bar">
-    <div class="stat-item">
-        <span class="number" data-count="187">0</span>
-        <span class="label tr" data-en="Projects Delivered" data-ar="مشروع منفذ">Projects Delivered</span>
-    </div>
-    <div class="stat-item">
-        <span class="number" data-count="42">0</span>
-        <span class="label tr" data-en="Active Clients" data-ar="عميل نشط">Active Clients</span>
-    </div>
-    <div class="stat-item">
-        <span class="number" data-count="15">0</span>
-        <span class="label tr" data-en="Awards Won" data-ar="جائزة حصلنا عليها">Awards Won</span>
-    </div>
-    <div class="stat-item">
-        <span class="number" data-count="98">0</span>
-        <span class="label tr" data-en="% Satisfaction" data-ar="% رضا العملاء">% Satisfaction</span>
-    </div>
-</div>
-
-<!-- ═══ MAIN GRID: Feed + Sidebar ═══ -->
-<div class="main-grid" id="feed">
-
-    <!-- ─── LEFT: POSTS FEED (managed with Pages CMS) ─── -->
-    <div class="feed-col">
-        <div class="feed-header">
-            <h2><i class="fas fa-rss"></i> <span class="tr" data-en="Latest Updates" data-ar="آخر المستجدات">Latest Updates</span></h2>
-            <div class="feed-tabs">
-                <button class="active" data-filter="all">All</button>
-                <button data-filter="project">Projects</button>
-                <button data-filter="insight">Insights</button>
-                <button data-filter="event">Events</button>
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience" class="content-section alt">
+    <div class="content-wrap">
+        <div class="content-heading">
+            <h2 class="tr" data-en="Our Experience" data-ar="خبراتنا">Our Experience</h2>
+            <p class="tr" data-en="Engineering expertise across design, BIM, site supervision, and smart structural technologies." data-ar="خبرات هندسية في التصميم وBIM والإشراف الموقعي وتقنيات المنشآت الذكية.">Engineering expertise across design, BIM, site supervision, and smart structural technologies.</p>
+        </div>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <i class="fas fa-layer-group"></i>
+                <h3 class="tr" data-en="Structural Design" data-ar="التصميم الإنشائي">Structural Design</h3>
+                <p>ETABS · SAP2000 · SAFE</p>
+            </div>
+            <div class="experience-card">
+                <i class="fas fa-city"></i>
+                <h3 class="tr" data-en="BIM Modeling" data-ar="نمذجة BIM">BIM Modeling</h3>
+                <p>Revit · Navisworks · Dynamo</p>
+            </div>
+            <div class="experience-card">
+                <i class="fas fa-hard-hat"></i>
+                <h3 class="tr" data-en="Site Supervision" data-ar="الإشراف الهندسي">Site Supervision</h3>
+                <p class="tr" data-en="Quality · Safety · Progress" data-ar="الجودة · السلامة · الإنجاز">Quality · Safety · Progress</p>
+            </div>
+            <div class="experience-card">
+                <i class="fas fa-robot"></i>
+                <h3 class="tr" data-en="Smart Structural Solutions" data-ar="حلول المنشآت الذكية">Smart Structural Solutions</h3>
+                <p class="tr" data-en="Monitoring · Diagnostics · Predictive Analytics" data-ar="المراقبة · التشخيص · التحليل التنبؤي">Monitoring · Diagnostics · Predictive Analytics</p>
             </div>
         </div>
-
-        {% if site.posts.size > 0 %}
-        {% for post in site.posts %}
-        <article class="post" data-category="{{ post.category | default: 'insight' | escape }}">
-            {% if post.image %}<img class="post-img" src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy">{% endif %}
-            <div class="post-body">
-                <div class="post-meta">
-                    <span class="tag">{{ post.category | default: 'Update' }}</span>
-                    <span>{{ post.date | date: "%B %d, %Y" }}</span>
-                    {% if post.author %}<span>• {{ post.author }}</span>{% endif %}
-                </div>
-                <h3>{{ post.title }}</h3>
-                {% if post.summary %}<p>{{ post.summary }}</p>{% else %}<p>{{ post.content | strip_html | truncate: 220 }}</p>{% endif %}
-                <div class="post-content" style="color:var(--text-dim);font-size:.9rem;line-height:1.7;">{{ post.content }}</div>
-            </div>
-        </article>
-        {% endfor %}
-        {% else %}
-        <div class="empty-content">No updates have been published yet.</div>
-        {% endif %}
     </div>
-
-</div>
-
+</section>
 
 <!-- ═══ PROJECTS ARCHIVE (managed with Pages CMS) ═══ -->
 <section id="projects" class="content-section alt">
@@ -1096,17 +1115,19 @@ layout: null
             {% if sorted_projects.size > 0 %}
             {% for project in sorted_projects %}
             <article class="project-card">
-                {% if project.image %}<img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy">{% endif %}
-                <div class="project-card-body">
-                    <div class="project-meta">
-                        {% if project.status %}<span>{{ project.status }}</span>{% endif %}
-                        {% if project.location %}<span><i class="fas fa-map-marker-alt"></i> {{ project.location }}</span>{% endif %}
-                        {% if project.date %}<span>{{ project.date | date: "%Y" }}</span>{% endif %}
+                <a class="project-link" href="{{ project.url | relative_url }}" aria-label="Open {{ project.title | escape }}">
+                    {% if project.image %}<img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy">{% endif %}
+                    <div class="project-card-body">
+                        <div class="project-meta">
+                            {% if project.status %}<span>{{ project.status }}</span>{% endif %}
+                            {% if project.location %}<span><i class="fas fa-map-marker-alt"></i> {{ project.location }}</span>{% endif %}
+                            {% if project.date %}<span>{{ project.date | date: "%Y" }}</span>{% endif %}
+                        </div>
+                        <h3>{{ project.title }}</h3>
+                        {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
+                        <span class="project-read-more tr" data-en="View Project" data-ar="عرض المشروع">View Project</span>
                     </div>
-                    <h3>{{ project.title }}</h3>
-                    {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
-                    <div style="margin-top:12px;color:var(--text-dim);font-size:.86rem;line-height:1.7;">{{ project.content }}</div>
-                </div>
+                </a>
             </article>
             {% endfor %}
             {% else %}
@@ -1147,38 +1168,33 @@ layout: null
     </div>
 </section>
 
-<!-- ═══ SERVICES SECTION (compact) ═══ -->
-<section id="services" style="padding:60px 5%;background:var(--bg-medium);border-top:1px solid rgba(255,255,255,0.04);">
-    <div style="max-width:1440px;margin:0 auto;">
-        <div class="section-header" style="text-align:center;margin-bottom:40px;">
-            <h2 style="font-size:1.8rem;color:var(--accent);text-transform:uppercase;" class="tr" data-en="Our Expertise" data-ar="مجالات الخبرة">Our Expertise</h2>
-            <div class="underline" style="width:60px;height:3px;background:var(--accent);margin:12px auto;"></div>
+<!-- ═══ ABOUT US ═══ -->
+<section id="about" class="content-section alt">
+    <div class="content-wrap">
+        <div class="content-heading">
+            <h2 class="tr" data-en="About Us" data-ar="معلومات عنا">About Us</h2>
+            <p class="tr" data-en="AEON Smart Structure provides smart engineering and structural solutions from Dubai, U.A.E." data-ar="تقدم شركة AEON Smart Structure حلولاً هندسية وإنشائية ذكية من دبي، الإمارات العربية المتحدة.">AEON Smart Structure provides smart engineering and structural solutions from Dubai, U.A.E.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
-            <div style="background:var(--bg-dark);padding:28px 20px;border-radius:var(--radius);text-align:center;border:1px solid rgba(255,255,255,0.04);transition:var(--transition);cursor:default;">
-                <i class="fas fa-layer-group" style="font-size:2.2rem;color:var(--accent);margin-bottom:12px;"></i>
-                <h4 style="font-size:1rem;" class="tr" data-en="Structural Design" data-ar="التصميم الإنشائي">Structural Design</h4>
-                <p style="color:var(--text-dim);font-size:0.85rem;" class="tr" data-en="ETABS · SAP2000 · SAFE" data-ar="ETABS · SAP2000 · SAFE">ETABS · SAP2000 · SAFE</p>
+        <div class="about-card">
+            <div class="about-item">
+                <i class="fas fa-building"></i>
+                <div><strong class="tr" data-en="Company" data-ar="الشركة">Company</strong><span>AEON Smart Structure</span></div>
             </div>
-            <div style="background:var(--bg-dark);padding:28px 20px;border-radius:var(--radius);text-align:center;border:1px solid rgba(255,255,255,0.04);transition:var(--transition);cursor:default;">
-                <i class="fas fa-city" style="font-size:2.2rem;color:var(--accent);margin-bottom:12px;"></i>
-                <h4 style="font-size:1rem;" class="tr" data-en="BIM Modeling" data-ar="نمذجة BIM">BIM Modeling</h4>
-                <p style="color:var(--text-dim);font-size:0.85rem;" class="tr" data-en="Revit · Navisworks · Dynamo" data-ar="Revit · Navisworks · Dynamo">Revit · Navisworks · Dynamo</p>
+            <div class="about-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div><strong class="tr" data-en="Location" data-ar="الموقع">Location</strong><span>Meydan Grandstand, 6th floor, Meydan Road, Nad Al Sheba, Dubai, U.A.E.</span></div>
             </div>
-            <div style="background:var(--bg-dark);padding:28px 20px;border-radius:var(--radius);text-align:center;border:1px solid rgba(255,255,255,0.04);transition:var(--transition);cursor:default;">
-                <i class="fas fa-hard-hat" style="font-size:2.2rem;color:var(--accent);margin-bottom:12px;"></i>
-                <h4 style="font-size:1rem;" class="tr" data-en="Site Supervision" data-ar="الإشراف الهندسي">Site Supervision</h4>
-                <p style="color:var(--text-dim);font-size:0.85rem;" class="tr" data-en="Quality · Safety · Progress" data-ar="جودة · سلامة · إنجاز">Quality · Safety · Progress</p>
+            <div class="about-item">
+                <i class="fas fa-phone"></i>
+                <div><strong class="tr" data-en="Phone" data-ar="الهاتف">Phone</strong><a href="tel:+971585918684">+971 585918684</a></div>
             </div>
-            <div style="background:var(--bg-dark);padding:28px 20px;border-radius:var(--radius);text-align:center;border:1px solid rgba(255,255,255,0.04);transition:var(--transition);cursor:default;">
-                <i class="fas fa-robot" style="font-size:2.2rem;color:var(--accent);margin-bottom:12px;"></i>
-                <h4 style="font-size:1rem;" class="tr" data-en="AI Diagnostics" data-ar="التشخيص بالذكاء الاصطناعي">AI Diagnostics</h4>
-                <p style="color:var(--text-dim);font-size:0.85rem;" class="tr" data-en="SHM · Predictive Analytics" data-ar="مراقبة الصحة · تحليل تنبؤي">SHM · Predictive Analytics</p>
+            <div class="about-item">
+                <i class="fas fa-envelope"></i>
+                <div><strong class="tr" data-en="Email" data-ar="البريد الإلكتروني">Email</strong><a href="mailto:aeonsst@gmail.com">aeonsst@gmail.com</a></div>
             </div>
         </div>
     </div>
 </section>
-
 
 <!-- ═══ PROJECT REQUEST / CONTACT FORM ═══ -->
 <section class="request-section" id="contact">
@@ -1358,73 +1374,6 @@ layout: null
     // Init
     goToSlide(0);
     startAutoPlay();
-
-    // ─── LIKE BUTTONS ───
-    document.querySelectorAll('.like-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const icon = this.querySelector('i');
-            const span = this.querySelector('span');
-            let count = parseInt(span.textContent);
-            if (this.classList.contains('liked')) {
-                this.classList.remove('liked');
-                icon.className = 'far fa-heart';
-                span.textContent = count - 1;
-            } else {
-                this.classList.add('liked');
-                icon.className = 'fas fa-heart';
-                span.textContent = count + 1;
-            }
-        });
-    });
-
-    // ─── FEED TABS ───
-    const tabButtons = document.querySelectorAll('.feed-tabs button');
-    const posts = document.querySelectorAll('.post');
-
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            tabButtons.forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            const filter = this.dataset.filter;
-            posts.forEach(post => {
-                if (filter === 'all' || post.dataset.category === filter) {
-                    post.style.display = 'block';
-                    post.style.animation = 'fadeUp 0.4s ease-out';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // ─── STATS COUNTER ANIMATION ───
-    const statNumbers = document.querySelectorAll('.stat-item .number');
-    let animated = false;
-
-    function animateCounters() {
-        if (animated) return;
-        const rect = document.querySelector('.stats-bar').getBoundingClientRect();
-        if (rect.top < window.innerHeight - 60) {
-            animated = true;
-            statNumbers.forEach(el => {
-                const target = parseInt(el.dataset.count);
-                let current = 0;
-                const increment = Math.ceil(target / 40);
-                const interval = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(interval);
-                    }
-                    el.textContent = current;
-                }, 35);
-            });
-        }
-    }
-
-    window.addEventListener('scroll', animateCounters);
-    window.addEventListener('load', () => { setTimeout(animateCounters, 400); });
 
     // ─── SMOOTH SCROLL ───
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
