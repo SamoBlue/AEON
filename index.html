@@ -666,6 +666,121 @@
             font-size: 0.85rem;
         }
 
+
+        /* ─── PROJECT REQUEST FORM ─── */
+        .request-section {
+            padding: 70px 5%;
+            background: var(--bg-dark);
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .request-wrap {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        .request-header {
+            text-align: center;
+            margin-bottom: 34px;
+        }
+        .request-header h2 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .request-header p {
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .request-form {
+            background: var(--bg-medium);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+        .form-group label {
+            font-size: 0.82rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 7px;
+            padding: 13px 14px;
+            font: inherit;
+            transition: var(--transition);
+        }
+        .form-group textarea {
+            min-height: 170px;
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(230,126,34,0.12);
+        }
+        .file-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .file-box {
+            background: var(--bg-dark);
+            border: 1px dashed rgba(230,126,34,0.55);
+            border-radius: 8px;
+            padding: 14px;
+        }
+        .file-box input[type="file"] {
+            padding: 0;
+            border: 0;
+            background: transparent;
+            font-size: 0.78rem;
+        }
+        .file-help {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+        .request-submit {
+            margin-top: 22px;
+            display: flex;
+            justify-content: center;
+        }
+        .form-status {
+            display: none;
+            margin-bottom: 18px;
+            padding: 12px 14px;
+            border-radius: 7px;
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.35);
+            color: #8ff0b5;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .file-row { grid-template-columns: 1fr; }
+            .request-form { padding: 20px; }
+        }
+
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .main-grid {
@@ -1071,6 +1186,66 @@
     </div>
 </section>
 
+
+<!-- ═══ PROJECT REQUEST / CONTACT FORM ═══ -->
+<section class="request-section" id="contact">
+    <div class="request-wrap">
+        <div class="request-header">
+            <h2 class="tr" data-en="Send a Project Request" data-ar="أرسل طلب مشروع">Send a Project Request</h2>
+            <p class="tr" data-en="Tell us what you need and attach drawings, photos, PDFs, or other project files. We will receive your request by email." data-ar="أخبرنا بما تحتاجه وأرفق المخططات أو الصور أو ملفات PDF أو أي ملفات خاصة بالمشروع. سنستلم طلبك عبر البريد الإلكتروني.">Tell us what you need and attach drawings, photos, PDFs, or other project files. We will receive your request by email.</p>
+        </div>
+
+        <form class="request-form" action="https://formsubmit.co/contact@aeonsmart.com" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://aeonsst.com/?sent=1#contact">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+            <div class="form-status" id="formStatus">
+                <span class="tr" data-en="Your request was sent successfully. Thank you." data-ar="تم إرسال طلبك بنجاح. شكرًا لك.">Your request was sent successfully. Thank you.</span>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="tr" data-en="Name *" data-ar="الاسم *">Name *</label>
+                    <input class="tr" type="text" name="name" required autocomplete="name" data-en="Your full name" data-ar="الاسم الكامل" placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label class="tr" data-en="Email *" data-ar="البريد الإلكتروني *">Email *</label>
+                    <input class="tr" type="email" name="email" required autocomplete="email" data-en="you@example.com" data-ar="you@example.com" placeholder="you@example.com">
+                </div>
+
+                <div class="form-group full">
+                    <label class="tr" data-en="Subject *" data-ar="عنوان الطلب *">Subject *</label>
+                    <input class="tr" type="text" name="_subject" required data-en="Example: Structural design request" data-ar="مثال: طلب تصميم إنشائي" placeholder="Example: Structural design request">
+                </div>
+
+                <div class="form-group full">
+                    <label class="tr" data-en="What do you need? *" data-ar="ما الذي تحتاجه؟ *">What do you need? *</label>
+                    <textarea class="tr" name="Project Request" required data-en="Describe the project, location, dimensions, deadlines, and anything else we should know..." data-ar="اشرح تفاصيل المشروع والموقع والأبعاد والموعد المطلوب وأي معلومات أخرى مهمة..." placeholder="Describe the project, location, dimensions, deadlines, and anything else we should know..."></textarea>
+                </div>
+
+                <div class="form-group full">
+                    <label class="tr" data-en="Attachments" data-ar="المرفقات">Attachments</label>
+                    <div class="file-row">
+                        <div class="file-box"><input type="file" name="attachment" accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx,.dwg,.dxf,.zip"></div>
+                        <div class="file-box"><input type="file" name="attachment2" accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx,.dwg,.dxf,.zip"></div>
+                        <div class="file-box"><input type="file" name="attachment3" accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xls,.xlsx,.dwg,.dxf,.zip"></div>
+                    </div>
+                    <p class="file-help tr" data-en="Up to 3 files. Total attachment size must be 10 MB or less." data-ar="يمكن إرفاق حتى 3 ملفات، ويجب ألا يتجاوز الحجم الإجمالي للمرفقات 10 ميغابايت.">Up to 3 files. Total attachment size must be 10 MB or less.</p>
+                </div>
+            </div>
+
+            <div class="request-submit">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                    <span class="tr" data-en="Send Request" data-ar="إرسال الطلب">Send Request</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
 <!-- ═══ FOOTER ═══ -->
 <footer>
     <div class="socials">
@@ -1282,6 +1457,16 @@
         const slides = document.querySelector('.hero-slides');
         if (slides) slides.style.transform = `translateX(-${currentIndex * 100}%)`;
     });
+
+
+    // ─── FORM SUCCESS MESSAGE ───
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') {
+        const status = document.getElementById('formStatus');
+        if (status) status.style.display = 'block';
+        history.replaceState({}, document.title, window.location.pathname + '#contact');
+    }
+
 </script>
 
 </body>
