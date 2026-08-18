@@ -134,6 +134,11 @@ layout: null
             color: white;
         }
 
+        .lang-flag {
+            font-size: 1.05rem;
+            line-height: 1;
+        }
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -403,9 +408,11 @@ layout: null
         .post-img {
             width: 100%;
             height: 220px;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
             display: block;
             background: var(--bg-card);
+            border-radius: var(--radius) var(--radius) 0 0;
         }
 
         .post-body {
@@ -948,8 +955,14 @@ layout: null
             box-shadow: var(--shadow);
         }
         .project-card img, .member-card img {
-            width: 100%; height: 210px; object-fit: cover; display: block;
-            background: var(--bg-card);
+            width: 100%;
+            height: 240px;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            background: var(--bg-dark);
+            border-radius: var(--radius) var(--radius) 0 0;
+            padding: 6px;
         }
         .project-card-body, .member-card-body { padding: 20px; }
         .project-card h3, .member-card h3 { font-size: 1.08rem; margin-bottom: 8px; }
@@ -1035,7 +1048,7 @@ layout: null
         </ul>
 
         <div class="nav-actions">
-            <button class="lang-switch" onclick="toggleLanguage()">العربية</button>
+            <button class="lang-switch" onclick="toggleLanguage()" type="button" aria-label="Switch language"><span class="lang-flag">🇦🇪</span> <span class="lang-label">العربية</span></button>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
             </button>
@@ -1257,13 +1270,6 @@ layout: null
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-    <div class="socials">
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    </div>
     <p>© 2026 AEON SMART STRUCTURE. <span class="tr" data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
 </footer>
 
@@ -1271,14 +1277,18 @@ layout: null
 <script>
     // ─── LANGUAGE TOGGLE ───
     function toggleLanguage() {
+        const html = document.documentElement;
         const body = document.body;
         const btn = document.querySelector('.lang-switch');
         const elements = document.querySelectorAll('.tr');
+        const currentDir = html.getAttribute('dir') || 'ltr';
 
-        if (body.dir === 'ltr') {
+        if (currentDir === 'ltr') {
+            html.setAttribute('dir', 'rtl');
+            html.setAttribute('lang', 'ar');
             body.dir = 'rtl';
             body.lang = 'ar';
-            btn.textContent = 'English';
+            btn.innerHTML = '<span class="lang-flag">🇬🇧</span> <span class="lang-label">English</span>';
             elements.forEach(el => {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = el.getAttribute('data-ar') || el.placeholder;
@@ -1288,9 +1298,11 @@ layout: null
                 }
             });
         } else {
+            html.setAttribute('dir', 'ltr');
+            html.setAttribute('lang', 'en');
             body.dir = 'ltr';
             body.lang = 'en';
-            btn.textContent = 'العربية';
+            btn.innerHTML = '<span class="lang-flag">🇦🇪</span> <span class="lang-label">العربية</span>';
             elements.forEach(el => {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     el.placeholder = el.getAttribute('data-en') || el.placeholder;
