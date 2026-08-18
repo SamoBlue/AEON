@@ -17,3 +17,7 @@ This package converts the existing static AEON page into a Jekyll site whose Fee
 - `_projects` contains project cards.
 - `_members` contains team-member cards.
 - The existing customer project-request form is kept in `index.html`.
+
+
+## Team
+Four starter team profiles are included. Their roles, bios, contact details, and photos can be edited or replaced from Pages CMS. The included images are placeholder initial avatars.
