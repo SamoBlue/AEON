@@ -1,9 +1,7 @@
 ---
-name: Gadder Haitham
+name: Ghadeer Haitham
 role: Operations & Administration
 order: 2
 bio: Member of the AEON Smart Structure team.
-email: 
-phone: 
-image: /assets/team/gadder-haitham.png
+email: rose_ghh@yahoo.com
 ---
