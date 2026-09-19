@@ -1668,7 +1668,7 @@ footer{background:#fff!important;border-top:1px solid #dce7f2!important;padding:
 .footer-copy{font-size:.48rem;color:#7b8da0}
 
 /* Hide old full-size content blocks now replaced by the reference homepage. */
-#team{display:none!important}
+#team{display:block!important}
 #about{display:none!important}
 .request-section{display:none!important}
 
@@ -1685,6 +1685,116 @@ footer{background:#fff!important;border-top:1px solid #dce7f2!important;padding:
 @media(max-width:430px){.featured-projects-grid{grid-template-columns:1fr!important}.why-grid{grid-template-columns:1fr}.why-item{border-left:0;border-top:1px solid #dce7f2;padding:12px}.tech-tools{grid-template-columns:repeat(3,1fr)}.mini-form-grid{grid-template-columns:1fr}.mini-form-grid .full{grid-column:auto}.hero-content h1{font-size:2rem!important}}
 
 @media(max-width:680px){.nav-quote{display:none!important}}
+        /* ─── RESTORED CMS TEAM SECTION ─── */
+        .team-section {
+            background: #ffffff;
+            padding: 58px 5% 64px;
+            border-top: 1px solid #e4e9ef;
+        }
+
+        .team-wrap {
+            max-width: 1260px;
+            margin: 0 auto;
+        }
+
+        .team-heading {
+            margin-bottom: 26px;
+        }
+
+        .team-heading h2 {
+            margin: 0;
+            color: #102d52;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+        }
+
+        .team-heading p {
+            margin: 8px 0 0;
+            max-width: 680px;
+            color: #607080;
+            font-size: .82rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .team-card {
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #dce5ee;
+            border-radius: 8px;
+            box-shadow: 0 5px 18px rgba(23, 48, 75, .06);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(23, 48, 75, .11);
+        }
+
+        .team-card-image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+            background: #eef3f7;
+        }
+
+        .team-card-body {
+            padding: 17px 17px 18px;
+        }
+
+        .team-card h3 {
+            margin: 0 0 5px;
+            color: #102d52;
+            font-size: .98rem;
+        }
+
+        .team-role {
+            color: #1769d2;
+            font-size: .72rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .team-bio {
+            color: #607080;
+            font-size: .7rem;
+            line-height: 1.55;
+        }
+
+        .team-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 10px;
+        }
+
+        .team-contact a {
+            color: #687684;
+            text-decoration: none;
+            font-size: .66rem;
+        }
+
+        .team-contact a:hover {
+            color: #1769d2;
+        }
+
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
 </style>
 </head>
 <body>
@@ -1700,7 +1810,7 @@ footer{background:#fff!important;border-top:1px solid #dce7f2!important;padding:
             <li><a href="#about-preview" class="tr" data-en="About" data-ar="من نحن">About</a></li>
             <li><a href="#experience" class="tr" data-en="Services" data-ar="الخدمات">Services</a></li>
             <li><a href="#projects" class="tr" data-en="Projects" data-ar="المشاريع">Projects</a></li>
-            <li><a href="#technology" class="tr" data-en="Technology" data-ar="التقنية">Technology</a></li>
+            <li><a href="#team">Team</a><a href="#technology" class="tr" data-en="Technology" data-ar="التقنية">Technology</a></li>
             <li><a href="#contact" class="tr" data-en="Contact" data-ar="اتصل بنا">Contact</a></li>
         </ul>
         <div class="nav-actions">
@@ -1742,7 +1852,7 @@ footer{background:#fff!important;border-top:1px solid #dce7f2!important;padding:
       </div>
     </section>
 
-    <!-- ═══ FEATURED PROJECTS ═══ -->
+    <!-- ═══ FEATURED PROJECTS — existing Pages CMS names + pictures ═══ -->
     <section id="projects" class="featured-section">
       <div class="featured-wrap">
         <div class="featured-header"><div><div class="section-kicker kicker tr" data-en="FEATURED PROJECTS" data-ar="مشاريع مميزة">FEATURED PROJECTS</div><h2 class="ref-title tr" data-en="Our Latest Work" data-ar="أحدث أعمالنا">Our Latest Work</h2></div><a href="#projects" class="featured-all tr" data-en="View All Projects →" data-ar="عرض جميع المشاريع ←">View All Projects →</a></div>
@@ -1763,6 +1873,69 @@ footer{background:#fff!important;border-top:1px solid #dce7f2!important;padding:
       <div class="why-item"><div class="why-icon"><i class="far fa-lightbulb"></i></div><h3 class="tr" data-en="Innovation" data-ar="الابتكار">Innovation</h3><p class="tr" data-en="Smart solutions using modern technology." data-ar="حلول ذكية باستخدام التكنولوجيا الحديثة.">Smart solutions using modern technology.</p></div>
       <div class="why-item"><div class="why-icon"><i class="fas fa-users"></i></div><h3 class="tr" data-en="Client-Focused" data-ar="التركيز على العميل">Client-Focused</h3><p class="tr" data-en="Your goals are our priority." data-ar="أهدافك هي أولويتنا.">Your goals are our priority.</p></div>
     </div></div></section>
+
+
+    <!-- ═══ OUR TEAM (managed with Pages CMS) ═══ -->
+    <section id="team" class="team-section">
+        <div class="team-wrap">
+            <div class="team-heading">
+                <div class="kicker tr" data-en="OUR TEAM" data-ar="فريقنا">OUR TEAM</div>
+                <h2 class="tr" data-en="The People Behind AEON" data-ar="فريق AEON">The People Behind AEON</h2>
+                <p class="tr"
+                   data-en="Meet the people behind AEON Smart Structure."
+                   data-ar="تعرّف على فريق AEON Smart Structure.">
+                    Meet the people behind AEON Smart Structure.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                {% assign sorted_members = site.members | sort: 'order' %}
+                {% if sorted_members.size > 0 %}
+                    {% for member in sorted_members %}
+                    <article class="team-card">
+                        {% if member.image %}
+                            <img class="team-card-image"
+                                 src="{{ member.image | relative_url }}"
+                                 alt="{{ member.name | escape }}"
+                                 loading="lazy">
+                        {% else %}
+                            <div class="team-card-image" aria-hidden="true"></div>
+                        {% endif %}
+
+                        <div class="team-card-body">
+                            <h3>{{ member.name }}</h3>
+
+                            {% if member.role %}
+                                <div class="team-role">{{ member.role }}</div>
+                            {% endif %}
+
+                            {% if member.bio %}
+                                <p class="team-bio">{{ member.bio }}</p>
+                            {% endif %}
+
+                            <div class="team-contact">
+                                {% if member.email %}
+                                    <a href="mailto:{{ member.email }}">
+                                        <i class="fas fa-envelope"></i> {{ member.email }}
+                                    </a>
+                                {% endif %}
+                                {% if member.phone %}
+                                    <a href="tel:{{ member.phone }}">
+                                        <i class="fas fa-phone"></i> {{ member.phone }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-content" style="grid-column:1/-1;">
+                        No team members have been added yet.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
 
     <!-- ═══ TECHNOLOGY ═══ -->
     <section id="technology" class="tech-section"><div class="ref-wrap"><div class="tech-grid"><div class="tech-copy"><div class="kicker tr" data-en="OUR TECHNOLOGY" data-ar="تقنياتنا">OUR TECHNOLOGY</div><h2 class="tr" data-en="Tools & Platforms" data-ar="الأدوات والمنصات">Tools & Platforms</h2><p class="tr" data-en="We use industry-leading software and technologies to deliver accurate, efficient and future-ready solutions." data-ar="نستخدم البرامج والتقنيات الرائدة في المجال لتقديم حلول دقيقة وفعالة وجاهزة للمستقبل.">We use industry-leading software and technologies to deliver accurate, efficient and future-ready solutions.</p><a class="btn btn-primary" href="#contact"><span class="tr" data-en="View All Technologies" data-ar="عرض جميع التقنيات">View All Technologies</span> <i class="fas fa-arrow-right"></i></a></div><div class="tech-tools">
