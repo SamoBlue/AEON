@@ -1,9 +1,7 @@
 ---
 name: Haitham Hasan
 role: Founder & Managing Director
-order: 4
+order: 1
 bio: Member of the AEON Smart Structure team.
-email: 
-phone: 
-image: /assets/team/haitham-hasan.png
+image: /assets/uploads/photo2026-09-2818-55-08.jpg
 ---
